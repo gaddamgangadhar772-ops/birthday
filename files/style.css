@@ -1,0 +1,153 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Background */
+background-image: url("https://images.unsplash.com/photo-1605902711622-cfb43c443f36?auto=format&fit=crop&w=1950&q=80");
+    background-color: #0a0a0a; /* fallback if image doesn't load */
+    background-size: cover;       /* make image cover the screen */
+    background-position: center;  /* center the image */
+    background-repeat: no-repeat; /* don't tile */
+    
+    color: #fff;
+}
+
+
+canvas#fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* -------------------------
+   Scene Styles
+------------------------- */
+.scene {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 1;
+    width: 90%;
+    max-width: 800px;
+}
+
+.scene.active {
+    opacity: 1;
+}
+
+/* -------------------------
+   Glowing Text
+------------------------- */
+.glow {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #ff0080;
+    text-shadow:
+        0 0 10px #ff0080,
+        0 0 20px #ff0080,
+        0 0 30px #ff0080,
+        0 0 40px #ff0080,
+        0 0 50px #ff0080,
+        0 0 60px #ff0080,
+        0 0 70px #ff0080;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { text-shadow: 0 0 5px #ff0080, 0 0 10px #ff0080; }
+    50% { text-shadow: 0 0 20px #ff0080, 0 0 40px #ff66c2; }
+    100% { text-shadow: 0 0 5px #ff0080, 0 0 10px #ff0080; }
+}
+
+/* -------------------------
+   Scene Text Styles
+------------------------- */
+.name {
+    font-size: 2.5rem;
+    color: #ff66c2;
+    margin-top: 10px;
+}
+
+.message, .love-text p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #ffccff;
+    text-shadow: 0 0 5px #ff66c2;
+}
+
+/* -------------------------
+   Photo Scenes
+------------------------- */
+.scene.photos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.scene.photos img {
+    max-width: 45%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #ff66c2, 0 0 30px #ff0080;
+    transition: transform 0.5s;
+}
+
+
+
+/* -------------------------
+   Final Scene
+------------------------- */
+.scene.final h2 {
+    font-size: 2rem;
+    color: #ff99cc;
+    margin-top: 20px;
+}
+
+/* -------------------------
+   Responsive Text
+------------------------- */
+@media (max-width: 600px) {
+    .glow {
+        font-size: 2.5rem;
+    }
+    .name {
+        font-size: 1.5rem;
+    }
+    .message, .love-text p {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+    .scene.photos img {
+        max-width: 90%;
+    }
+}
+.audio-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 5;
+}
+
+.audio-controls button {
+    background: #ff4da6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.audio-controls button:hover {
+    background: #ff1a8c;
+}
